@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  anchor:
+    build: .
+    container_name: Anchor
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - /mnt/rclone:/mnt/rclone
+      - /mnt/symlink:/mnt/symlink
+    environment:
+      - MDB_API_KEY=apikeyapikeyapikey    # MDBList API Key Required!
+      - RCLONE_DIR=/mnt/rclone            # Source Directory
+      - SYMLINK_DIR=/mnt/symlink          # Destination Parent Directory
