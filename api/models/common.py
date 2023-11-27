@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from typing import Optional
 
+
 class Review(BaseModel):
     updated_at: Optional[str] = None
     author: str

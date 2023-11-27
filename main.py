@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from api.endpoints.symlink import router as symlink_router
+from api.endpoints import symlink, parse
 from docs.openapi import anchor_api
 
 
@@ -11,6 +11,12 @@ tags_metadata = [
 ]
 
 app = FastAPI(openapi_tags=tags_metadata)
-
 app.openapi = lambda: anchor_api(app)
-app.include_router(symlink_router)
+
+# Include routers from endpoints
+app.include_router(symlink.router)
+app.include_router(parse.router)
+
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the Anchor API"}

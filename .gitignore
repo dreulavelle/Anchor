@@ -3,7 +3,7 @@ docker-compose.yml
 rclone/
 symlink/
 test*
-*test
+*test*
 Makefile
 
 # Byte-compiled / optimized / DLL files

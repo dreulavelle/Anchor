@@ -6,11 +6,10 @@ def anchor_api(app):
 
     openapi_schema = get_openapi(
         title="Anchor API",
-        version="1.0.0",
+        version="0.2.1",
         description="API Documentation for Anchor",
         routes=app.routes,
         tags=[{"name": "symlink", "description": "Operations with symlinks."}],
-        # You can add more metadata here as needed.
     )
 
     app.openapi_schema = openapi_schema
