@@ -14,7 +14,7 @@ class PTN(BaseModel):
     edition: Optional[str] = None
 
     @validator('resolution', pre=True, always=True)
-    def extract_resolution(cls, v, values, **kwargs):
+    def extract_resolution(cls, _, values, **kwargs):
         filename = values.get('filename', '')
         resolution_patterns = [
             (r'\b480p\b', 480),
@@ -25,7 +25,7 @@ class PTN(BaseModel):
         for pattern, res_pattern in resolution_patterns:
             match = re.search(pattern, filename, re.IGNORECASE)
             if match:
-                return res_pattern(match).upper() if callable(res_pattern) else res_pattern
+                return res_pattern(match) if callable(res_pattern) else res_pattern
         return None
 
     @validator('audio', pre=True, always=True)
