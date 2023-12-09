@@ -5,6 +5,7 @@ import re
 
 class PTN(BaseModel):
     filename: str
+    year: Optional[int] = None
     resolution: Optional[int] = None
     audio: Optional[str] = None
     hdr: Optional[str] = None
@@ -12,6 +13,15 @@ class PTN(BaseModel):
     bit_depth: Optional[str] = None
     source: Optional[str] = None
     edition: Optional[str] = None
+
+    @validator('year', pre=True, always=True)
+    def extract_year(cls, _, values, **kwargs):
+        filename = values.get('filename', '')
+        year_pattern = r'\b(19\d{2}|20[01]\d)\b'
+        match = re.search(year_pattern, filename)
+        if match:
+            return match.group(1)
+        return None
 
     @validator('resolution', pre=True, always=True)
     def extract_resolution(cls, _, values, **kwargs):
@@ -92,7 +102,6 @@ class PTN(BaseModel):
                 return depth_format(match) if callable(depth_format) else depth_format.upper()
         return None
 
-
     @validator('source', pre=True, always=True)
     def extract_source(cls, _, values, **kwargs):
         filename = values.get('filename', '')
@@ -134,7 +143,7 @@ class PTN(BaseModel):
         filename = values.get('filename', '')
         edition_patterns = [
             (r'\bDiamond\b', 'Diamond Edition'),
-            (r'\bRemastered\b', 'Remastered Edition'),
+            (r'\bRemaster(?:ed)?\b', 'Remastered Edition'),
             (r'\bUltimate.Edition\b', 'Ultimate Edition'),
             (r'\bExtended.Director\'?s\b', 'Director\'s Cut'),
             (r'\bDirector\'?s.Cut\b', 'Director\'s Cut'),

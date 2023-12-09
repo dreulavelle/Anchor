@@ -14,14 +14,16 @@ Anchor API is a FastAPI application designed for creating and managing symlinks 
 - Python 3.8 or higher
 
 ## Installation
-1. Clone the repository
+1. Clone the repository & cd into the directory
 
-2. Set your MDB API key in the docker-compose.yml:
+2. Set your MDB API key in the docker-compose-example.yml:
    ```yml
    MDB_API_KEY=your_mdb_api_key
    ```
 
-3. Build and run the Docker container:
+3. Rename docker-compose-example.yml to docker-compose.yml
+
+4. Build and run the Docker container:
    ```bash
    docker-compose up -d
    ```
@@ -42,12 +44,7 @@ curl -X POST http://localhost:8000/symlink/series \
 -d '{"filename":"series-folder", "imdb_id":"tt0944947", "library_name":"TV Shows"}'
 ```
 
-### Create a Movie Symlink (Bash)
-```bash
-curl -X POST http://localhost:8000/symlink/movie \
--H "Content-Type: application/json" \
--d '{"filename":"Inception.mp4", "imdb_id":"tt1375666", "library_name":"Movies"}'
-```
+## Developer Integration
 
 ### Create a Movie Symlink (Python)
 ```python
