@@ -4,7 +4,8 @@ from api.models.series import SeriesMDBMetadata
 from pydantic import ValidationError
 import os
 
-MDB_API_KEY = os.environ.get('MDB_API_KEY', 'default_api_key')
+
+MDB_API_KEY = os.environ.get('MDB_API_KEY', None)
 
 async def fetch_movie_metadata(imdb_id: str) -> MDBMetadata:
     url = f"https://mdblist.com/api/?apikey={MDB_API_KEY}&i={imdb_id}"

@@ -1,5 +1,6 @@
 import logging
 
+
 def get_logger(name: str, level=logging.DEBUG) -> logging.Logger:
     """
     Creates and returns a logger with the given name and level.

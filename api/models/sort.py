@@ -1,6 +1,7 @@
 from typing import Dict, Optional
 from pydantic import BaseModel
 
+
 class LibraryConfig(BaseModel):
     default_movie: Optional[bool] = None
     default_show: Optional[bool] = None

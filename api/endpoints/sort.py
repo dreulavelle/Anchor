@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 from api.models.sort import SortRequest, Config
 from api.models.ptn import PTN
 import yaml
-import os
+
 
 router = APIRouter()
 

@@ -1,5 +1,6 @@
 from fastapi.openapi.utils import get_openapi
 
+
 def anchor_api(app):
     if app.openapi_schema:
         return app.openapi_schema

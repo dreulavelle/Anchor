@@ -1,13 +1,14 @@
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, Query
 from utils.logger import get_logger
 from api.models.ptn import PTN
 import os
+
 
 logger = get_logger(__name__, level=os.environ.get('LOG_LEVEL', 'INFO'))
 router = APIRouter()
 
 @router.get("/parse",
-            response_model=PTN,  # Using PTN class directly as response model
+            response_model=PTN,
             tags=["Parsing"], 
             summary="Parse Torrent Filename",
             description="Parses a torrent filename to extract details like resolution, audio, HDR, codec, and extras.")
