@@ -1,0 +1,80 @@
+libraries:
+  'Movies':
+    default_movie: true
+    type: 'movie'
+    anime: false    # `anime` genre OR defined by country language of id + `animation` genre.
+    4k: false       # `2160p|4k` regex from title
+
+    # Extra hypotheticals
+    hdr: false      # regex from title
+    remux: true     # regex from title
+    kids: false     # checked from imdb metadata
+  
+  'TV Shows':
+    default_show: true
+    type: 'show'
+    anime: false
+    4k: true
+
+    # Extra hypotheticals
+    hdr: true
+    remux: false
+    kids: false
+  
+  '4K Movies':
+    type: 'movie'
+    anime: false
+    4k: true
+
+    # Extra hypotheticals
+    hdr: true
+    remux: true
+    kids: false
+  
+  'Anime Movies':
+    type: 'movie'
+    anime: true
+    4k: true
+
+    # Extra hypotheticals
+    hdr: true
+    remux: true
+    kids: false
+
+  'Anime TV':
+    type: show
+    anime: true
+    4k: true
+
+    # Extra hypotheticals
+    hdr: true
+    remux: true
+    kids: false
+
+  'Kids Movies':
+    type: movie
+    anime: false
+    4k: true
+
+    # Extra hypotheticals
+    hdr: true
+    remux: true
+    kids: true
+
+  'Kids TV':
+    type: 'show'
+    anime: false
+    4k: true
+
+    # Extra hypotheticals
+    hdr: true
+    remux: true
+    kids: true
+
+  'UFC':
+    type: movie
+    anime: false
+    4k: true
+
+    # Extra hypotheticals
+    regex: (UFC|Fight.Night)
