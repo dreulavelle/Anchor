@@ -3,6 +3,7 @@ version: '3.8'
 services:
   anchor:
     build: .
+    image: anchor:latest
     container_name: Anchor
     restart: unless-stopped
     ports:
@@ -14,3 +15,4 @@ services:
       - MDB_API_KEY=apikeyapikeyapikey    # MDBList API Key Required!
       - RCLONE_DIR=/mnt/rclone            # Source Directory
       - SYMLINK_DIR=/mnt/symlink          # Destination Parent Directory
+      - LOG_LEVEL=INFO
